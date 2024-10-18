@@ -2,10 +2,10 @@ import { Button } from "@radix-ui/themes";
 import Link from "next/link";
 const IssuePage = () => {
   return (
-    <>
+    <div>
       <div>IssuePage</div>
       <Button><Link href='/issues/new'>New Issue</Link></Button>
-    </>
+    </div>
   );
 };
 

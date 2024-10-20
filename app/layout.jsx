@@ -1,4 +1,4 @@
-import { Theme } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -22,7 +22,9 @@ const RootLayout = ({ children }) => {
       <body>
         <Theme accentColor="violet">
           <Navbar />
-          <main className="p-5 font-inter">{children}</main>
+          <main className="py-5 px-8 font-inter">
+            <Container>{children}</Container>
+          </main>
         </Theme>
       </body>
     </html>

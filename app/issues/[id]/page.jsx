@@ -1,7 +1,7 @@
 import StatusBadge from "@/app/components/Badge";
 import prisma from "@/prisma/client";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
-import React from "react";
+import Markdown from "react-markdown";
 
 const IssueDetails = async ({ params }) => {
   const issue = await prisma.issue.findUnique({
@@ -14,7 +14,9 @@ const IssueDetails = async ({ params }) => {
         <StatusBadge status={issue.status} />
         <Text>{issue.createdAt.toDateString()}</Text>
       </Flex>
-      <Card>{issue.description}</Card>
+      <Card className="prose" mt="4">
+        <Markdown>{issue.description}</Markdown>
+      </Card>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import IssueFormSkeleton from "../loading";
+import IssueFormSkeleton from "./loading";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 

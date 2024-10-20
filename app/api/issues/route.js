@@ -1,6 +1,5 @@
-import prisma from "@/prisma/client";
-import { z } from "zod";
 import createIssueSchema from "@/app/validationSchemas";
+import prisma from "@/prisma/client";
 
 const POST = async (request) => {
   const body = await request.json();

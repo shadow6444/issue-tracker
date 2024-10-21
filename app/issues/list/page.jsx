@@ -5,6 +5,11 @@ import IssueActions from "./IssueActions";
 import IssueTable, { columNames } from "./IssueTable";
 import { Flex } from "@radix-ui/themes";
 
+export const metadata = {
+  title: "Issue Tracker - Issue List",
+  description: "View all project issues",
+};
+
 const IssuePage = async ({ searchParams }) => {
   const statuses = Object.values(Status);
   const status = statuses.includes(searchParams.status)

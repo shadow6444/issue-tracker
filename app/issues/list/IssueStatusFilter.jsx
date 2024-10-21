@@ -1,9 +1,10 @@
 "use client";
 
 import { Select } from "@radix-ui/themes";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const IssueStatusFilter = () => {
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   const statuses = [
@@ -15,8 +16,13 @@ const IssueStatusFilter = () => {
 
   return (
     <Select.Root
+      defaultValue={searchParams.get("status") || null}
       onValueChange={(status) => {
-        const query = status ? `?status=${status}` : "";
+        const params = new URLSearchParams();
+        if (status) params.append("status", status);
+        const orderBy = searchParams.get("orderBy");
+        if (orderBy) params.append("orderBy", orderBy);
+        const query = params.size ? "?" + params.toString() : "";
         router.push("/issues/list" + query);
       }}
     >

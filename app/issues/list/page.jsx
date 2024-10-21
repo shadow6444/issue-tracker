@@ -1,14 +1,22 @@
-import { Link, StatusBadge } from "@/app/components";
+import { StatusBadge } from "@/app/components";
 import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
 import IssueActions from "./IssueActions";
 import { Status } from "@prisma/client";
+import Link from "next/link";
+import { FaArrowUp } from "react-icons/fa6";
 
 const IssuePage = async ({ searchParams }) => {
   const statuses = Object.values(Status);
   const status = statuses.includes(searchParams.status)
     ? searchParams.status
     : undefined;
+
+  const colums = [
+    { label: "Issue", value: "title" },
+    { label: "Status", value: "status", className: "hidden sm:table-cell" },
+    { label: "Created", value: "createdAt", className: "hidden sm:table-cell" },
+  ];
   const issues = await prisma.issue.findMany({
     where: { status: status },
   });
@@ -18,13 +26,21 @@ const IssuePage = async ({ searchParams }) => {
       <Table.Root variant="surface" layout="auto">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden sm:table-cell">
-              Status
-            </Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden sm:table-cell">
-              Created
-            </Table.ColumnHeaderCell>
+            {colums.map((column) => (
+              <Table.ColumnHeaderCell
+                key={column.value}
+                className={column.className}
+              >
+                <Link
+                  href={{
+                    query: { ...searchParams, orderBy: column.value },
+                  }}
+                >
+                  {column.value === searchParams.orderBy && <FaArrowUp className="inline "/>}
+                  {column.label}
+                </Link>
+              </Table.ColumnHeaderCell>
+            ))}
           </Table.Row>
         </Table.Header>
         <Table.Body>

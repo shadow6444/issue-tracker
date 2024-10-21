@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
 import "./theme-config.css";
+import AuthProvider from "./auth/Provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,12 +21,14 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <Theme accentColor="violet">
-          <Navbar />
-          <main className="py-5 px-8 font-inter">
-            <Container>{children}</Container>
-          </main>
-        </Theme>
+        <AuthProvider>
+          <Theme accentColor="violet">
+            <Navbar />
+            <main className="py-5 px-8 font-inter">
+              <Container>{children}</Container>
+            </main>
+          </Theme>
+        </AuthProvider>
       </body>
     </html>
   );

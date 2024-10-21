@@ -5,6 +5,7 @@ import IssueActions from "./IssueActions";
 import { Status } from "@prisma/client";
 import Link from "next/link";
 import { FaArrowUp } from "react-icons/fa6";
+import Pagination from "@/app/components/Pagination";
 
 const IssuePage = async ({ searchParams }) => {
   const statuses = Object.values(Status);
@@ -24,10 +25,17 @@ const IssuePage = async ({ searchParams }) => {
     ? { [searchParams.orderBy]: "asc" }
     : undefined;
 
+  const page = parseInt(searchParams.page) || 1;
+  const pageSize = 10;
+
   const issues = await prisma.issue.findMany({
     where: { status },
     orderBy,
+    skip: (page - 1) * pageSize,
+    take: pageSize,
   });
+
+  const issueCount = await prisma.issue.count({ where: { status } });
   return (
     <div>
       <IssueActions />
@@ -72,6 +80,11 @@ const IssuePage = async ({ searchParams }) => {
           ))}
         </Table.Body>
       </Table.Root>
+      <Pagination
+        pageSize={pageSize}
+        currentPage={page}
+        itemCount={issueCount}
+      />
     </div>
   );
 };

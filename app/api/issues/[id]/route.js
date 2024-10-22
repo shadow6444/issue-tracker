@@ -1,5 +1,5 @@
 import authOptions from "@/app/auth/authOptions";
-import IssueSchema, { patchIssueSchema } from "@/app/validationSchemas";
+import IssueSchema, { patchIssueSchema } from "@/app/schema/validationSchemas";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
 

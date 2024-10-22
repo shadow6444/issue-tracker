@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@/app/components";
+import { Skeleton } from "@/app/common components";
 import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";

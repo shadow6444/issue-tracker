@@ -1,8 +1,8 @@
-import Pagination from "@/app/components/Pagination";
+import Pagination from "@/app/issues/list/main components/Pagination";
 import prisma from "@/prisma/client";
 import { Status } from "@prisma/client";
-import IssueActions from "./IssueActions";
-import IssueTable, { columNames } from "./IssueTable";
+import IssueActions from "./main components/IssueActions";
+import IssueTable, { columNames } from "./main components/IssueTable";
 import { Flex } from "@radix-ui/themes";
 
 export const metadata = {

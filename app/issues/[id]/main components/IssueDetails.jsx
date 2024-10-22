@@ -1,4 +1,4 @@
-import { StatusBadge } from "@/app/common components";
+import { StatusBadge } from "@/app/components/common components";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import Markdown from "react-markdown";
 

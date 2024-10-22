@@ -1,4 +1,4 @@
-import { StatusBadge } from "@/app/common components";
+import { StatusBadge } from "@/app/components/common components";
 import { Table } from "@radix-ui/themes";
 import Link from "next/link";
 import { FaArrowUp } from "react-icons/fa6";

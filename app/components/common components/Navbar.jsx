@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillBug } from "react-icons/ai";
-import { Skeleton } from "@/app/common components";
+import { Skeleton } from "@/app/components/common components";
 const Navbar = () => {
   return (
     <nav className="border-b px-10 mb-5 py-5">
